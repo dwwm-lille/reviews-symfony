@@ -4,4 +4,6 @@
 
 {% block body %}
     <h1 class="text-3xl text-center font-bold underline">Site d'avis entreprises</h1>
+
+    <div {{ react_component('Home', { companies: companies }) }}></div>
 {% endblock %}
