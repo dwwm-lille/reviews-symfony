@@ -18,3 +18,20 @@ Attention de bien lancer le serveur MySQL ou Laragon. Et bien sûr, on peut lanc
 php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
+
+Pour le front, n'oubliez pas d'installer les dépendances :
+
+```bash
+npm install
+```
+
+N'oubliez pas de compiler le CSS et le JS :
+
+```bash
+# Compile 1 fois
+npm run dev
+
+# Compile à chaque modification
+npm run watch
+npm run dev-server
+```
