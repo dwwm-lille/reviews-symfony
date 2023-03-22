@@ -6,4 +6,17 @@
     <h1 class="text-3xl text-center font-bold underline">Site d'avis entreprises</h1>
 
     <div {{ react_component('Home', { companies: companies }) }}></div>
+
+    <a href="{{ path('app_review_new') }}">Laisser un avis</a>
+
+    <ul class="divide-y-2 space-y-2 my-12">
+        {% for review in reviews %}
+            <li class="pt-2">
+                <a href="#" class="flex gap-4">
+                    <strong>{{ review.user.name }}</strong>
+                    <span>{{ review.content }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
