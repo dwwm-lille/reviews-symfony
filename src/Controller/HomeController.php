@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
+use App\Form\ReviewType;
 use App\Repository\ReviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +25,11 @@ class HomeController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function new()
     {
-        return $this->redirectToRoute('app_home');
+        $review = new Review();
+        $form = $this->createForm(ReviewType::class, $review);
+
+        return $this->render('review/new.html.twig', [
+            'form' => $form,
+        ]);
     }
 }

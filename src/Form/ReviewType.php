@@ -13,8 +13,8 @@ class ReviewType extends AbstractType
     {
         $builder
             ->add('content')
-            ->add('createdAt')
-            ->add('user')
+            // ->add('createdAt')
+            // ->add('user')
         ;
     }
 
