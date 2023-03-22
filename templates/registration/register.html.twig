@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="max-w-2xl mx-auto border my-4 py-10 px-20">
+    <h1 class="text-center text-3xl mb-6">Register</h1>
+
+    <div>
+        {{ form_start(registrationForm) }}
+            <div>
+                {{ form_row(registrationForm.email, { attr: { class: 'w-full' } }) }}
+            </div>
+
+            {{ form_widget(registrationForm) }}
+
+            <button class="bg-slate-500 text-white py-2 px-3 hover:bg-slate-400 rounded-lg block w-full mt-10" formnovalidate>Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}
