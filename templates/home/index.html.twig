@@ -12,10 +12,13 @@
     <ul class="divide-y-2 space-y-2 my-12">
         {% for review in reviews %}
             <li class="pt-2">
-                <a href="#" class="flex gap-4">
+                <div class="flex gap-4 items-center">
                     <strong>{{ review.user.name }}</strong>
                     <span>{{ review.content }}</span>
-                </a>
+                    {% if is_granted('ROLE_USER') and app.user == review.user %}
+                    <a href="{{ path('app_review_delete', { id: review.id }) }}" class="bg-red-400 hover:bg-red-500 rounded px-3 py-2 text-white">X</a>
+                    {% endif %}
+                </div>
             </li>
         {% endfor %}
     </ul>

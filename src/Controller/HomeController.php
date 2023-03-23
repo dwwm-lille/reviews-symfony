@@ -6,6 +6,7 @@ use App\Entity\Review;
 use App\Form\ReviewType;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,5 +50,15 @@ class HomeController extends AbstractController
         return $this->render('review/new.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/review/delete/{id}', name: 'app_review_delete')]
+    #[Security("is_granted('ROLE_USER') and user === review.getUser()")]
+    public function delete(Review $review, EntityManagerInterface $manager)
+    {
+        $manager->remove($review);
+        $manager->flush();
+
+        return $this->redirectToRoute('app_home');
     }
 }
